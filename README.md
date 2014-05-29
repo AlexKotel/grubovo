@@ -21,7 +21,9 @@ Tools
 - pngsprite (+retina)
 - svgsprite
 - iconfont
+- coffeelint
 - livereload
+- autoinject js/css in html
 
 Installation
 ------------
