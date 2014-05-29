@@ -25,7 +25,7 @@ Tools
 - livereload
 - autoinject js/css in html
 
-Installation
+Install
 ------------
 
 ```bash
@@ -34,8 +34,8 @@ npm i -g coffee-script
 npm i && bower i
 ```
 
-Usage
------
+Run
+---
 
 Developement version
 
@@ -57,9 +57,6 @@ heroku create your_app_name
 git push heroku master
 ```
 
-Tips & tricks
+How to
 -------------
-- After deleting any files from /src you must relaunch grunt
 - pngsprite@2x dimensions mist be placed in settings.styl
-
-:shit:

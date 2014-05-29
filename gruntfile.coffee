@@ -2,6 +2,7 @@
 # =============================================================================
 dep =
 
+
 	scripts: [
 		'bower_components/async/lib/async.js'
 		'bower_components/jquery/dist/jquery.js'
@@ -9,6 +10,7 @@ dep =
 		'bower_components/parsleyjs/dist/parsley.js'
 		'bower_components/bootstrap/dist/js/bootstrap.js'
 	]
+
 
 	styles: [
 		'bower_components/bootstrap/dist/css/bootstrap.css'
@@ -19,16 +21,19 @@ dep =
 # =============================================================================
 dist =
 
+
 	dep: [
 		'dist/dep/js/jquery.js'
 		'dist/dep/js/angular.js'
 		'dist/dep/js/*.js'
 	]
 
+
 	app: [
 		'dist/js/app.js'
 		'dist/js/**/*.js'
 	]
+
 	
 	styles: [
 		'dist/dep/css/*.css'
@@ -41,18 +46,23 @@ dist =
 # =============================================================================
 module.exports = (grunt) ->
 
+
 	require('load-grunt-tasks')(grunt)
+
 
 	grunt.initConfig
 
+
 		dep: dep
 		dist: dist
+
 
 		env:
 			dev:
 				NODE_ENV: 'DEVELOPEMENT'
 			prod:
 				NODE_ENV: 'PRODUCTION'
+
 
 		copy:
 			img:
@@ -133,6 +143,7 @@ module.exports = (grunt) ->
 					ext: '.styl'
 				]
 
+
 		jade:
 			options:
 				pretty: true
@@ -142,6 +153,7 @@ module.exports = (grunt) ->
 				src: '*.jade'
 				dest: 'dist'
 				ext: '.html'
+
 
 		coffee:
 			options:
@@ -153,6 +165,7 @@ module.exports = (grunt) ->
 				dest: 'dist/js'
 				ext: '.js'
 
+
 		coffeelint:
 			options:
 				force: true
@@ -160,6 +173,7 @@ module.exports = (grunt) ->
 				expand: true
 				cwd: 'src/coffee'
 				src: '**/*.coffee'
+
 
 		stylus:
 			options:
@@ -170,6 +184,7 @@ module.exports = (grunt) ->
 				src: 'app.styl'
 				dest: 'dist/css'
 				ext: '.css'
+
 
 		htmlbuild:
 			options:
@@ -183,6 +198,7 @@ module.exports = (grunt) ->
 			files:
 				src: 'dist/*.html'
 				dest: 'dist'
+
 
 		svgmin:
 			img:
@@ -200,6 +216,7 @@ module.exports = (grunt) ->
 				cwd: 'src/tools/svgsprite/src'
 				src: '*.svg'
 				dest: 'src/tools/svgsprite/dist/optimized'
+
 
 		imagemin:
 			options:
@@ -226,6 +243,7 @@ module.exports = (grunt) ->
 				src: '*.png'
 				dest: 'src/tools/pngsprite/dist/optimized/x2'
 
+
 		webfont:
 			icons:
 				options:
@@ -240,6 +258,7 @@ module.exports = (grunt) ->
 				src: 'src/tools/iconfont/dist/optimized/*.svg'
 				dest: 'src/tools/iconfont/dist'
 				destCss: 'src/tools/iconfont/dist'
+
 
 		sprite:
 			options:
@@ -268,6 +287,7 @@ module.exports = (grunt) ->
 				destCSS: 'src/tools/pngsprite/dist/pngsprite.css'
 				imgPath: '../img/pngsprite@2x.png'
 
+
 		svgsprite:
 			icons:
 				src: 'src/tools/svgsprite/dist/optimized'
@@ -279,6 +299,7 @@ module.exports = (grunt) ->
 					render:
 						css:
 							dest: 'svgsprite.css'
+
 
 		concat:
 			styles:
@@ -294,15 +315,18 @@ module.exports = (grunt) ->
 				src: ['dist/tmp/dep.concated.js', 'dist/tmp/app.concated.js']
 				dest: 'dist/tmp/build.concated.js'
 
+
 		uglify:
 			files:
 				src: '<%= concat.build.dest %>'
 				dest: "dist/js/build-#{Date.now()}.js"
 
+
 		cssmin:
 			files:
 				src: '<%= concat.styles.dest %>'
 				dest: "dist/css/build-#{Date.now()}.css"
+
 
 		htmlmin:
 			options:
@@ -322,6 +346,7 @@ module.exports = (grunt) ->
 				src: '*.html'
 				dest: 'dist'
 				ext: '.html'
+
 
 		watch:
 			options: 
@@ -381,6 +406,7 @@ module.exports = (grunt) ->
 					'copy:svgsprite'
 				]
 
+
 		connect:
 			dev:
 				options:
@@ -391,6 +417,7 @@ module.exports = (grunt) ->
 					port: 8001
 					base: 'dist'
 					keepalive: true
+
 
 		clean:
 			dist: 'dist'
@@ -407,6 +434,7 @@ module.exports = (grunt) ->
 				'src/tools/pngsprite/dist'
 				'src/tools/datasprite/dist'
 			]
+
 
 	grunt.registerTask 'tools', [
 		'clean:tools'
@@ -426,6 +454,7 @@ module.exports = (grunt) ->
 		'copy:sprite'
 	]
 
+
 	grunt.registerTask 'default', [
 		'env:dev'
 		'clean'
@@ -443,6 +472,7 @@ module.exports = (grunt) ->
 		'connect:dev'
 		'watch'
 	]
+
 
 	grunt.registerTask 'build', [
 		'env:prod'
