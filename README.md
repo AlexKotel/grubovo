@@ -26,7 +26,7 @@ Tools:
 - autoinject js/css in html
 
 Install
-------------
+-------
 
 ```bash
 npm i -g grunt-cli
@@ -57,8 +57,8 @@ heroku create your_app_name
 git push heroku master
 ```
 
-How to
--------------
+How to use
+----------
 
 Icon font:
 - add `xxx.svg` to `src/tools/iconfont/src/`
