@@ -49,6 +49,14 @@ Production version
 grunt build
 ```
 
+Deploy
+------
+
+```bash
+heroku create your_app_name
+git push heroku master
+```
+
 Tips & tricks
 -------------
 - After deleting any files from /src you must relaunch grunt
