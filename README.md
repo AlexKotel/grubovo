@@ -67,7 +67,7 @@ Icon font:
 SVG sprite:
 - add `xxx.svg` to `src/tools/svgsprite/src/`
 - use `i.svg.svg-xxx` for sprite position
-- use `i.svg-xxx-dims` for default icon size
+- use `.svg-xxx-dims` for default icon size
 
 PNG sprite:
 - add `xxx.png` to `src/tools/sprite/src/`
