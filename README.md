@@ -61,20 +61,20 @@ How to
 -------------
 
 Icon font:
-- add 'xxx.svg' to src/tools/iconfont/src/
-- use 'i.fi.fi-xxx'
+- add `xxx.svg` to `src/tools/iconfont/src/`
+- use `i.fi.fi-xxx`
 
 SVG sprite:
-- add 'xxx.svg' to src/tools/svgsprite/src/
-- use 'i.svg.svg-xxx' for sprite position
-- use 'i.svg-xxx-dims' for default icon size
+- add `xxx.svg` to `src/tools/svgsprite/src/`
+- use `i.svg.svg-xxx` for sprite position
+- use `i.svg-xxx-dims` for default icon size
 
 PNG sprite:
-- add 'xxx.png' to src/tools/sprite/src/
-- use 'i.i.i-xxx'
+- add `xxx.png` to `src/tools/sprite/src/`
+- use `i.i.i-xxx`
 
 PNG sprite with retina support:
-- add 'xxx.png' to src/tools/pngsprite/src/1x/
-- add 'xxx@2x.png' to src/tools/pngsprite/src/2x/
-- change $sprite-width and $sprite-height in src/stylus/settings.styl
-- use 'i.png.png-xxx'
+- add `xxx.png` to `src/tools/pngsprite/src/1x/`
+- add `xxx@2x.png` to `src/tools/pngsprite/src/2x/`
+- change `$sprite-width` and `$sprite-height` in `src/stylus/settings.styl`
+- use `i.png.png-xxx`
