@@ -343,7 +343,7 @@ module.exports = (grunt) ->
 				tasks: ['jade', 'htmlbuild']
 			coffee:
 				files: ['src/coffee/**/*']
-				tasks: ['newer:coffee']
+				tasks: ['newer:coffeelint', 'newer:coffee']
 			stylus:
 				files: ['src/stylus/**/*']
 				tasks: ['stylus']
