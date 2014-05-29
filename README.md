@@ -1,5 +1,5 @@
-GRUBOVO
-=======
+:skull: GRUBOVO :skull:
+=======================
 
 Features
 --------
@@ -61,3 +61,5 @@ Tips & tricks
 -------------
 - After deleting any files from /src you must relaunch grunt
 - pngsprite@2x dimensions mist be placed in settings.styl
+
+:shit:
