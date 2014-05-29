@@ -1,0 +1,37 @@
+{
+	"name": "app",
+	"devDependencies": {
+		"nib": "",
+		"grunt": "",
+		"grunt-env": "",
+		"grunt-newer": "",
+		"grunt-svgmin": "",
+		"grunt-webfont": "*",
+		"grunt-grunticon": "*",
+		"grunt-svg-sprite": "*",
+		"grunt-spritesmith": "*",
+		"grunt-coffeelint": "",
+		"grunt-html-build": "",
+		"grunt-contrib-jade": "",
+		"grunt-contrib-copy": "",
+		"grunt-contrib-clean": "",
+		"grunt-contrib-watch": "",
+		"grunt-contrib-stylus": "",
+		"grunt-contrib-coffee": "",
+		"grunt-contrib-concat": "",
+		"grunt-contrib-uglify": "",
+		"grunt-contrib-cssmin": "",
+		"grunt-contrib-htmlmin": "",
+		"grunt-contrib-connect": "",
+		"grunt-contrib-imagemin": "",
+		"load-grunt-tasks": ""
+	},
+	"dependencies": {
+		"coffee-script": "",
+		"express": ""
+	},
+	"author": {
+		"name": "iboozyvoozy",
+		"email": "iboozyvoozy@me.com"
+	}
+}
