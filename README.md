@@ -4,12 +4,12 @@
 Features
 --------
 
-Preprocessors
+Preprocessors:
 - jade
 - coffee
 - stylus
 
-Optimizations
+Optimizations:
 - concat
 - uglify
 - imgmin
@@ -17,7 +17,7 @@ Optimizations
 - cssmin
 - htmlmin
 
-Tools
+Tools:
 - pngsprite (+retina)
 - svgsprite
 - iconfont
@@ -37,13 +37,13 @@ npm i && bower i
 Run
 ---
 
-Developement version
+Developement version:
 
 ```bash
 grunt
 ```
 
-Production version
+Production version:
 
 ```bash
 grunt build
@@ -59,4 +59,22 @@ git push heroku master
 
 How to
 -------------
-- pngsprite@2x dimensions mist be placed in settings.styl
+
+Icon font:
+- add 'xxx.svg' to src/tools/iconfont/src/
+- use 'i.fi.fi-xxx'
+
+SVG sprite:
+- add 'xxx.svg' to src/tools/svgsprite/src/
+- use 'i.svg.svg-xxx' for sprite position
+- use 'i.svg-xxx-dims' for default icon size
+
+PNG sprite:
+- add 'xxx.png' to src/tools/sprite/src/
+- use 'i.i.i-xxx'
+
+PNG sprite with retina support:
+- add 'xxx.png' to src/tools/pngsprite/src/1x/
+- add 'xxx@2x.png' to src/tools/pngsprite/src/2x/
+- change $sprite-width and $sprite-height in src/stylus/settings.styl
+- use 'i.png.png-xxx'
