@@ -11,7 +11,7 @@ dep =
 	]
 
 	styles: [
-		# 'bower_components/bootstrap/dist/css/bootstrap.css'
+		'bower_components/bootstrap/dist/css/bootstrap.css'
 	]
 
 
@@ -21,6 +21,7 @@ dist =
 
 	dep: [
 		'dist/dep/js/jquery.js'
+		'dist/dep/js/angular.js'
 		'dist/dep/js/*.js'
 	]
 
@@ -189,18 +190,16 @@ module.exports = (grunt) ->
 				cwd: 'src/img'
 				src: '**/*.svg'
 				dest: 'dist/img'
-			tools: 
-				files: [
-					expand: true
-					cwd: 'src/tools/iconfont/src'
-					src: '*.svg'
-					dest: 'src/tools/iconfont/dist/optimized'
-				,
-					expand: true
-					cwd: 'src/tools/svgsprite/src'
-					src: '*.svg'
-					dest: 'src/tools/svgsprite/dist/optimized'
-				]
+			iconfont:
+				expand: true
+				cwd: 'src/tools/iconfont/src'
+				src: '*.svg'
+				dest: 'src/tools/iconfont/dist/optimized'
+			svgsprite:
+				expand: true
+				cwd: 'src/tools/svgsprite/src'
+				src: '*.svg'
+				dest: 'src/tools/svgsprite/dist/optimized'
 
 		imagemin:
 			options:
@@ -211,23 +210,21 @@ module.exports = (grunt) ->
 				cwd: 'src/img'
 				src: '**/*.{png,jpg,gif}'
 				dest: 'dist/img'
-			tools: 
-				files: [
-					expand: true
-					cwd: 'src/tools/sprite/src'
-					src: '*.png'
-					dest: 'src/tools/sprite/dist/optimized'
-				,
-					expand: true
-					cwd: 'src/tools/pngsprite/src/x1'
-					src: '*.png'
-					dest: 'src/tools/pngsprite/dist/optimized/x1'
-				,
-					expand: true
-					cwd: 'src/tools/pngsprite/src/x2'
-					src: '*.png'
-					dest: 'src/tools/pngsprite/dist/optimized/x2'
-				]
+			sprite:
+				expand: true
+				cwd: 'src/tools/sprite/src'
+				src: '*.png'
+				dest: 'src/tools/sprite/dist/optimized'
+			pngsprite1x:
+				expand: true
+				cwd: 'src/tools/pngsprite/src/x1'
+				src: '*.png'
+				dest: 'src/tools/pngsprite/dist/optimized/x1'
+			pngsprite2x:
+				expand: true
+				cwd: 'src/tools/pngsprite/src/x2'
+				src: '*.png'
+				dest: 'src/tools/pngsprite/dist/optimized/x2'
 
 		webfont:
 			icons:
@@ -312,7 +309,7 @@ module.exports = (grunt) ->
 				removeComments: true
 				removeCommentsFromCDATA: true
 				removeCDATASectionsFromCDATA: true
-				collapseWhitespace: true
+				collapseWhitespace: false
 				collapseBooleanAttributes: true
 				removeAttributeQuotes: true
 				removeRedundantAttributes: true
@@ -338,15 +335,51 @@ module.exports = (grunt) ->
 			data:
 				files: ['src/data/**/*']
 				tasks: ['newer:copy:data']
-			jade:
-				files: ['src/jade/**/*', 'src/*.jade']
-				tasks: ['jade', 'htmlbuild']
-			coffee:
-				files: ['src/coffee/**/*']
-				tasks: ['newer:coffeelint', 'newer:coffee']
 			stylus:
 				files: ['src/stylus/**/*']
 				tasks: ['stylus']
+			jade:
+				files: ['src/jade/**/*', 'src/*.jade']
+				tasks: [
+					'jade'
+					'htmlbuild'
+				]
+			coffee:
+				files: ['src/coffee/**/*']
+				tasks: [
+					'newer:coffeelint'
+					'newer:coffee'
+				]
+			iconfont:
+				files: ['src/tools/iconfont/src/**/*']
+				tasks: [
+					'newer:svgmin:iconfont'
+					'webfont'
+					'copy:iconfont'
+				]
+			sprite:
+				files: ['src/tools/sprite/src/**/*']
+				tasks: [
+					'newer:imagemin:sprite'
+					'sprite:simple'
+					'copy:sprite'
+				]
+			pngsprite:
+				files: ['src/tools/pngsprite/src/**/*']
+				tasks: [
+					'newer:imagemin:pngsprite1x'
+					'newer:imagemin:pngsprite2x'
+					'sprite:x2'
+					'sprite:x1'
+					'copy:pngsprite'
+				]
+			svgsprite:
+				files: ['src/tools/svgsprite/src/**/*']
+				tasks: [
+					'newer:svgmin:svgsprite'
+					'svgsprite'
+					'copy:svgsprite'
+				]
 
 		connect:
 			dev:
@@ -368,7 +401,6 @@ module.exports = (grunt) ->
 				'dist/js'
 			]
 			tools: [
-				'src/stylus/tools'
 				'src/tools/sprite/dist'
 				'src/tools/iconfont/dist'
 				'src/tools/svgsprite/dist'
@@ -378,8 +410,11 @@ module.exports = (grunt) ->
 
 	grunt.registerTask 'tools', [
 		'clean:tools'
-		'svgmin:tools'
-		'imagemin:tools'
+		'svgmin:iconfont'
+		'svgmin:svgsprite'
+		'imagemin:sprite'
+		'imagemin:pngsprite1x'
+		'imagemin:pngsprite2x'
 		'sprite:simple'
 		'sprite:x2'
 		'sprite:x1'
@@ -433,5 +468,6 @@ module.exports = (grunt) ->
 		'htmlbuild'
 		'htmlmin'
 		'clean:tmp'
+		'clean:tools'
 		'connect:prod'
 	]
