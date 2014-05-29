@@ -53,7 +53,7 @@ Deploy
 ------
 
 ```bash
-heroku create your_app_name
+heroku create app_name
 git push heroku master
 ```
 
